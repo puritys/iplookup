@@ -1,0 +1,27 @@
+{
+  "name": "iplookup",
+  "description": "Get information from IP",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/.git"
+  },
+  "main": "index.js",
+  "bin": {
+    "ipinfo": "bin/iplookup.js"
+  },
+  "keywords": [
+    "geo",
+    "ip"
+  ],
+  "dependencies": {
+    "promise": "^7.0.1",
+    "request": "^2.57.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Puritys Chen",
+    "email": "puritys.chen@outlook.com",
+    "url": "http://www.puritys.me"
+  }
+}
