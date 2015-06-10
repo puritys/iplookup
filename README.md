@@ -44,6 +44,6 @@ Result:
 
 </pre>
 
-More Example:
+More Example (Display the flag of nation):
 
 <img src="https://raw.githubusercontent.com/puritys/MyProgram/master/images/iplookup.png" />
