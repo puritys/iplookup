@@ -3,12 +3,12 @@ iplookup
 
 ### Get the information of IP including the country, city, geo position, hostname
 
-Install:
+##Install:
 
 sudo npm install -g iplookup
 
 
-Command Example:
+##Command Example:
 
 ```
 iplookup 74.125.203.94
@@ -16,7 +16,7 @@ iplookup 74.125.203.94
 iplookup 74.125.203.94 122.116.130.211 74.25.203.94
 ```
 
-Result:
+##Result:
 
 ```
         ip: 122.116.130.211
@@ -43,6 +43,6 @@ Result:
  shortName: us
 ```
 
-More Example (Display the flag of nation):
+##More Example (Display the flag of nation):
 
 <img src="https://raw.githubusercontent.com/puritys/MyProgram/master/images/iplookup.png" />
