@@ -25,13 +25,9 @@ function getInfo(ip) {
                             return util.printImg(flag);
                         }
                     }
-                } catch (e) {
-                    return new Promise(function (fulfill, reject) {fulfill(ret);});
-                }
-                return new Promise(function (fulfill, reject) {fulfill(ret);});
-            } else {
-                return new Promise(function (fulfill, reject) {fulfill(ret);});
-            }
+                } catch (e) {}
+            } 
+            return new Promise(function (fulfill, reject) {fulfill(ret);});
         })
         .then(function (ret) {
             return new Promise(function (fulfill, reject) {
@@ -42,7 +38,19 @@ function getInfo(ip) {
     //        util.fetchFlag(flag, './map.gif');
             //return util.fetchMap(ret.latitude, ret.longitude, './map.png');
         })
-        .then(function(ret) {
+        .then(function(x) {
+            return util.fetchHostName(info.ip);
+        })
+        .then(function (hostname) {
+            return new Promise(function (fulfill, reject) {
+                if (hostname && hostname[0]) {
+                    console.log("  hostname: " + hostname[0]);
+                }
+                fulfill(true);
+            });
+        })
+        .then(function(x) {
+            // getHostname
             return new Promise(function (fulfill, reject) {
                 console.log("\n");
             });

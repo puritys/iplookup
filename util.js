@@ -6,7 +6,7 @@
 var Promise = require('promise');
 var request = require('request');
 var fs = require('fs');
-
+var dns = require('dns');
 function fetchTwSeoInfo(ip) {
     var url = "http://dir.twseo.org/ip-query3.php";
     return new Promise(function (fulfill, reject) {
@@ -96,8 +96,17 @@ function printImg(file) {
     });
 }
 
+function fetchHostName(ip) {
+    return new Promise(function (fulfill, reject) {
+        dns.reverse(ip, function (err, hostname) {
+            fulfill(hostname);
+        });
+    });
+}
+
 exports.fetchTwSeoInfo = fetchTwSeoInfo;
 exports.parseTwSeoResponse = parseTwSeoResponse;
 exports.fetchMap = fetchMap;
 exports.printIpInfo = printIpInfo;
 exports.printImg = printImg;
+exports.fetchHostName = fetchHostName;

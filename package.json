@@ -1,7 +1,7 @@
 {
   "name": "iplookup",
-  "description": "Get the information of IP including the country, city, geo position",
-  "version": "0.0.5",
+  "description": "Get the information of IP including the country, city, geo position, hostname",
+  "version": "0.0.6",
   "repository": {
     "type": "git",
     "url": "git@github.com:puritys/iplookup.git"
@@ -19,7 +19,7 @@
     "iplookup": "bin/iplookup.js"
   },
   "keywords": [
-    "geo",
+    "geo position",
     "ip"
   ],
   "dependencies": {
