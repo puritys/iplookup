@@ -10,15 +10,15 @@ sudo npm install -g iplookup
 
 Command Example:
 
-<pre>
+```
 iplookup 74.125.203.94
 
 iplookup 74.125.203.94 122.116.130.211 74.25.203.94
-</pre>
+```
 
 Result:
 
-<pre>
+```
         ip: 122.116.130.211
       flag: http://dir.twseo.org/images/flags/tw.gif
    country: 台灣 (Taiwan)
@@ -41,8 +41,7 @@ Result:
       flag: http://dir.twseo.org/images/flags/us.gif
    country: 美國 (United states)
  shortName: us
-
-</pre>
+```
 
 More Example (Display the flag of nation):
 
