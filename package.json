@@ -1,20 +1,29 @@
 {
   "name": "iplookup",
-  "description": "Get information from IP",
-  "version": "0.0.1",
+  "description": "Get the information of IP including the country, city, geo position",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/.git"
+    "url": "git@github.com:puritys/iplookup.git"
   },
-  "main": "index.js",
+  "main": "iplookup",
+  "files": [
+    "bin",
+    "index.js",
+    "util.js",
+    "flags",
+    "iplookup.js",
+    "package.json"
+  ],
   "bin": {
-    "ipinfo": "bin/iplookup.js"
+    "iplookup": "bin/iplookup.js"
   },
   "keywords": [
     "geo",
     "ip"
   ],
   "dependencies": {
+    "picture-tube": "0.0.4",
     "promise": "^7.0.1",
     "request": "^2.57.0"
   },

@@ -1,7 +1,7 @@
 iplookup
 ========
 
-npm install -g iplookup
+sudo npm install -g iplookup
 
 
 Example:

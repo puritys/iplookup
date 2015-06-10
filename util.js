@@ -28,9 +28,14 @@ function parseTwSeoResponse(data) {
     reg = /查詢IP:[\s]+[^>]+>([0-9\.]+)/;
     if (matches = data.match(reg)) ret['ip'] = matches[1];
     // Country
-    reg = /IP國別[^>]+>[^>]+>([^<]+)/
-    if (matches = data.match(reg)) ret['country'] = matches[1];
-
+    reg = /IP國別:[\s]*<img[\s]+src="([^\"]+)"[^>]+>[^>]+>([^<]+)/
+    if (matches = data.match(reg)) {
+        ret['flag'] = "http://dir.twseo.org/" + matches[1];
+        ret['country'] = matches[2];
+        //short name
+        var m = matches[1].match(/([a-z]+)\.gif$/);
+        if (m && m[1]) ret['shortName'] = m[1];
+    }
     // Citry
     reg = /IP地理[^>]+>([^<]+)/
     if (matches = data.match(reg)) ret['city'] = matches[1];
@@ -44,6 +49,14 @@ function parseTwSeoResponse(data) {
 
     return ret;
 }
+
+function fetchFlag(url, outputPath) {
+    return new Promise(function (fulfill, reject) {
+       request(url).pipe(fs.createWriteStream(outputPath));
+       fulfill();
+    });
+}
+
 
 function fetchMap(latitude, longitude, outputPath) {
     var url = "https://maps.googleapis.com/maps/api/staticmap?center=" +latitude+","+longitude+"&zoom=1&size=700x400&maptype=roadmap";
@@ -66,10 +79,10 @@ function printIpInfo(info) {
 }
 
 function printImg(file) {
-console.log("print");
-    var tube = require('picture-tube')(["","", file]);
-    fs.createReadStream(file).pipe(tube);
-    tube.pipe(process.stdout);
+    var tube = require.resolve('picture-tube');
+    tube = tube.replace(/[a-zA-Z\.0-9]+$/, '') + '../.bin/picture-tube'
+    var exec = require('child_process').execSync;
+    exec(tube + ' ' + file, {stdio: [0, 1, 2]});
 }
 
 exports.fetchTwSeoInfo = fetchTwSeoInfo;
