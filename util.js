@@ -79,10 +79,21 @@ function printIpInfo(info) {
 }
 
 function printImg(file) {
-    var tube = require.resolve('picture-tube');
-    tube = tube.replace(/[a-zA-Z\.0-9]+$/, '') + '../.bin/picture-tube'
-    var exec = require('child_process').execSync;
-    exec(tube + ' ' + file, {stdio: [0, 1, 2]});
+    return new Promise(function (fulfill, reject) {
+        var tube = require.resolve('picture-tube');
+        tube = tube.replace(/[a-zA-Z\.0-9]+$/, '') + '../.bin/picture-tube'
+        var exec = require('child_process').execSync;
+        if (!exec) {
+            exec = require('child_process').exec;
+            exec(tube + ' ' + file, function (error, stdout, stderr) {
+                console.log(stdout);
+                fulfill(true);
+            });
+        } else {
+            exec(tube + ' ' + file, {stdio: [0, 1, 2]});
+            fulfill(true);
+        }
+    });
 }
 
 exports.fetchTwSeoInfo = fetchTwSeoInfo;

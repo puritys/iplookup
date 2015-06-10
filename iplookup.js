@@ -1,3 +1,4 @@
+var Promise = require('promise');
 var util = require('./util.js');
 var ip, inputNum;
 var fs = require('fs');
@@ -11,33 +12,38 @@ for (var i = 2 ; i < inputNum; i++) {
 }
 
 function getInfo(ip) {
-
+    var info;
     util.fetchTwSeoInfo(ip)
-        .then(function (ret) {
-            return new Promise(function (fullfill, reject) {
+        .then(function(ret) {
+            info = ret;
+            if (inputNum === 3) {
                 var country = ret['country'].replace(/[^a-z]+/ig, ''), flag;
-                console.log("\n");
-
-                if (inputNum === 3) {
-                    try {
-                        if (ret['shortName']) {
-                            flag = __dirname + "/flags/flags_iso/48/" + ret['shortName'] + ".png";
-                            if (fs.existsSync(flag)) {
-                                util.printImg(flag);
-                            }
+                try {
+                    if (ret['shortName']) {
+                        flag = __dirname + "/flags/flags_iso/48/" + ret['shortName'] + ".png";
+                        if (fs.existsSync(flag)) {
+                            return util.printImg(flag);
                         }
-                    } catch (e) {
-
                     }
+                } catch (e) {
+                    return new Promise(function (fulfill, reject) {fulfill(ret);});
                 }
-                util.printIpInfo(ret);
-                fullfill(ret);
+                return new Promise(function (fulfill, reject) {fulfill(ret);});
+            } else {
+                return new Promise(function (fulfill, reject) {fulfill(ret);});
+            }
+        })
+        .then(function (ret) {
+            return new Promise(function (fulfill, reject) {
+                console.log("\n");
+                util.printIpInfo(info);
+                fulfill(info);
             });
     //        util.fetchFlag(flag, './map.gif');
             //return util.fetchMap(ret.latitude, ret.longitude, './map.png');
         })
         .then(function(ret) {
-            return new Promise(function (fullfill, reject) {
+            return new Promise(function (fulfill, reject) {
                 console.log("\n");
             });
         });

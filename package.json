@@ -1,7 +1,7 @@
 {
   "name": "iplookup",
   "description": "Get the information of IP including the country, city, geo position",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "git@github.com:puritys/iplookup.git"
