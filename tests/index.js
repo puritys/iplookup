@@ -1,5 +1,6 @@
 var tester = require('./../index.js');
 var assert = require("assert");
+
 describe("Parse Web Page Response", function () {
     /*
      * Verify Country, City, Geo location, draw map, Language
@@ -14,10 +15,30 @@ describe("Parse Web Page Response", function () {
             expect = data[0];
             html = data[1];
             var res = tester.parseTwSeoResponse(html);
-            console.log(res);
+            //console.log(res);
             for (var key in expect) {
                 assert.equal(expect[key], res[key]);
             }
+        });
+
+    });
+
+});
+
+describe("Get Ip informatino", function () {
+    it("Method getInfo", function () {
+        var datas = [
+            ["ca", "192.99.196.211"]
+        ];
+
+        datas.forEach(function (data) {
+            var expect, ip;
+            expect = data[0];
+            ip = data[1];
+            tester.getInfo(ip, function (info) {
+                //console.log(info);
+                assert.equal(expect, info['shortName'])
+            });
         });
 
     });

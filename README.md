@@ -10,13 +10,23 @@ sudo npm install -g iplookup
 
 ## Command Example:
 
+Get single IP information
+
 ```
 iplookup 74.125.203.94
+```
 
+Get multi-ip informations
+
+```
 iplookup 74.125.203.94 122.116.130.211 74.25.203.94
 ```
 
-## Result:
+## Single-Result (Display the flag of nation):
+
+<img src="https://raw.githubusercontent.com/puritys/MyProgram/master/images/iplookup.png" />
+
+## Multi-Result:
 
 ```
         ip: 122.116.130.211
@@ -43,6 +53,24 @@ iplookup 74.125.203.94 122.116.130.211 74.25.203.94
  shortName: us
 ```
 
-## More Example (Display the flag of nation):
+## iplookup Library Example:
 
-<img src="https://raw.githubusercontent.com/puritys/MyProgram/master/images/iplookup.png" />
+```
+var iplookup = require('iplookup');
+
+iplookup.getInfo('173.194.72.94', function (ret) {
+    console.log(ret);
+});
+/*
+// Return value will be a JSON data:
+{ ip: '173.194.72.94',
+  flag: 'http://dir.twseo.org/images/flags/us.gif',
+  country: '美國 (United States)',
+  shortName: 'us',
+  city: 'Mountain View',
+  latitude: '37.4192',
+  longitude: '-122.0574' }
+*/
+```
+
+
