@@ -3,6 +3,8 @@ iplookup
 
 ### Get the information of IP including the country, city, geo position, hostname
 
+<a href="https://www.npmjs.com/package/iplookup" target="_blank">NPM: iplookup</a>
+
 ## Install:
 
 sudo npm install -g iplookup
